@@ -1,2 +1,14 @@
 This demo branch shows how the various modules can be combined and used.
 
+----
+
+I use this in my .git/config to work on my private forks of the submodules:
+
+[remote "github"]
+	url = git@github.com:DavidS/puppet-manifests.git
+	fetch = +refs/heads/*:refs/remotes/github/*
+[submodule "modules/common"]
+	url = git@github.com:DavidS/puppet-common.git
+[submodule "modules/munin"]
+	url = git@github.com:DavidS/puppet-munin.git
+
