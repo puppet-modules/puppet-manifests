@@ -13,6 +13,7 @@ import 'common'
 # import all other modules
 import 'apache'
 import 'munin'
+import 'nagios'
 import 'ssh'
 
 #######################################################################
@@ -24,17 +25,32 @@ node default
 	# all hosts should have the munin agent installed
 	include munin::client
 
+	# watch all hosts
+	include nagios::target
+
 	# every host should be reachable by ssh
+	# this is automatically checked with nagios
 	include ssh::server
 }
 
-node 'munin' inherits default
+node 'monitoring' inherits default
 {
 	# this host gathers munin statistics
 	include munin::host
 
-	# install apache, hosting the munin site on 'munin.example.com'
+	# co-host nagios monitoring
+	include nagios
+
+	# install apache
 	include apache
-	munin::apache_site { 'munin.example.com': }
+
+	# host the munin site on 'munin.example.com'
+	# and check it with nagios
+	$munin_virtual_host = "munin.example.com"
+	munin::apache_site { $munin_virtual_host: }
+	nagios::service {
+		"monitor-www":
+			check_command => "check_http2!${munin_virtual_host}!0.1!0.2"
+	}
 }
 

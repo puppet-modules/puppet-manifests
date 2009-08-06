@@ -10,3 +10,6 @@
 [submodule "modules/ssh"]
 	path = modules/ssh
 	url = git://github.com/puppet-modules/puppet-ssh.git
+[submodule "modules/nagios"]
+	path = modules/nagios
+	url = git://github.com/puppet-modules/puppet-nagios.git
