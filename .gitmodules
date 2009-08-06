@@ -4,3 +4,6 @@
 [submodule "modules/munin"]
 	path = modules/munin
 	url = git://github.com/puppet-modules/puppet-munin.git
+[submodule "modules/apache"]
+	path = modules/apache
+	url = git://github.com/puppet-modules/puppet-apache.git

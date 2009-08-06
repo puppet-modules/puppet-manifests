@@ -19,11 +19,17 @@ import 'munin'
 
 node default
 {
+	# all hosts should have the munin agent installed
 	include munin::client
 }
 
 node 'munin'
 {
+	# this host gathers munin statistics
 	include munin::host
+
+	# install apache, hosting the munin site on 'munin.example.com'
+	include apache
+	munin::apache_site { 'munin.example.com': }
 }
 
