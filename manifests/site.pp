@@ -11,7 +11,9 @@ $munin_cidr_allow = [ '127.0.0.1/32' ]
 import 'common'
 
 # import all other modules
+import 'apache'
 import 'munin'
+import 'ssh'
 
 #######################################################################
 ##  Nodes  ############################################################
@@ -21,9 +23,12 @@ node default
 {
 	# all hosts should have the munin agent installed
 	include munin::client
+
+	# every host should be reachable by ssh
+	include ssh::server
 }
 
-node 'munin'
+node 'munin' inherits default
 {
 	# this host gathers munin statistics
 	include munin::host

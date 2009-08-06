@@ -7,3 +7,6 @@
 [submodule "modules/apache"]
 	path = modules/apache
 	url = git://github.com/puppet-modules/puppet-apache.git
+[submodule "modules/ssh"]
+	path = modules/ssh
+	url = git://github.com/puppet-modules/puppet-ssh.git
