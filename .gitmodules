@@ -1,6 +1,9 @@
 [submodule "modules/common"]
 	path = modules/common
 	url = git://github.com/puppet-modules/puppet-common.git
+[submodule "modules/concat"]
+	path = modules/concat
+	url = git://github.com/puppet-modules/puppet-concat.git
 [submodule "modules/munin"]
 	path = modules/munin
 	url = git://github.com/puppet-modules/puppet-munin.git
